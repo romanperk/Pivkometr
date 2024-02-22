@@ -3,9 +3,11 @@ import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import '../Main/App.css';
-import Grid from '@mui/material/Grid';
-
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -14,36 +16,95 @@ const Item = styled(Paper)(({ theme }) => ({
     textAlign: 'center',
     color: theme.palette.text.secondary,
   }));
-
-export default function MainPage() {
+ 
+  /* 
+    Mnozstvi se zobrazi pouze u piva a nealka
+    Dodelat dvoujazycnost
+    Moznost zmenit mnozstvi v prehledu
+  */
+  export default function MainPage() {
   return (
-      <Box sx={{ flexGrow: 1  }} paddingTop="40px" width="80%">
-        <Grid container spacing={2}>
-            <Grid item xs={8}>
-                <Box sx={{
-                p: 2,
-                borderRadius: 2,
-                bgcolor: 'grey'
-              }}>
+      <div>
+        <Accordion>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon/>}
+          aria-controls="panel1-content"
+          id="panel1-header"
+          sx={{ borderRadius: 3}}
+        >
+          Přidej položku
+        </AccordionSummary>
+        <AccordionDetails>
+          <Box sx={{ bgcolor: 'grey', borderRadius: 3, p: 2, margin: 2 }} >
                 <Stack spacing={2}>
-                    <Item>Vyber druh --- vypln nazev --- cena --- mnozstvi --- total cena</Item>
-                    <Item>Vyber druh --- vypln nazev --- cena --- mnozstvi --- total cena</Item>
-                    <Item>Vyber druh --- vypln nazev --- cena --- mnozstvi --- total cena</Item>
+                    <Item>Vyber druh (pivo/jídlo/panák/nealko)</Item>
+                    <Item>Vyplň název (Plzeň)</Item>
+                    <Item>Vyber množství (0,5l)</Item>
+                    <Item>Vyplň cenu (55Kč)</Item>
                 </Stack>
-                </Box>
-            </Grid>
-            <Grid item xs={4}>
-                <Box sx={{
-                    p: 2,
-                    borderRadius: 2,
-                    bgcolor: 'grey'
-                }}>
+          </Box>
+        </AccordionDetails>
+        </Accordion>
+
+        <Accordion>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon/>}
+          aria-controls="panel1-content"
+          id="panel1-header"
+          sx={{ borderRadius: 3}}
+        >
+          Přehled položek
+        </AccordionSummary>
+        <AccordionDetails>
+        <Box sx={{ bgcolor: 'grey', borderRadius: 3, p: 2, margin: 2 }} >
                 <Stack spacing={2}>
-                    <Item>CELKOVA CENA</Item>
+                    <Item>PIVA</Item>
+                    <Item>Plzeň 0,5l (55kč) 5x = 275Kč</Item>
                 </Stack>
-                </Box>
-            </Grid>
-        </Grid>
-    </Box>
+        </Box>
+        <Box sx={{ bgcolor: 'grey', borderRadius: 3, p: 2, margin: 2 }} >
+                <Stack spacing={2}>
+                    <Item>JÍDLO</Item>
+                    <Item>Řízečky s kaší 180Kč 1x = 180Kč</Item>
+                </Stack>
+        </Box>
+        <Box sx={{ bgcolor: 'grey', borderRadius: 3, p: 2, margin: 2 }} >
+                <Stack spacing={2}>
+                    <Item>PANÁKY</Item>
+                    <Item>Zelená 50Kč 2x = 100Kč</Item>
+                </Stack>
+        </Box>
+        <Box sx={{ bgcolor: 'grey', borderRadius: 3, p: 2, margin: 2 }} >
+                <Stack spacing={2}>
+                    <Item>NEALKO</Item>
+                    <Item>Malinovka 0,5l 50Kč 1x = 50Kč</Item>
+                </Stack>
+        </Box>
+        </AccordionDetails>
+        </Accordion>
+        <Box sx={{ bgcolor: 'grey', borderRadius: 3, p: 2, margin: 2 }} >
+                <Item>CELKOVÁ CENA = 605Kč</Item>
+        </Box>
+    </div>
   );
 }
+
+/*
+
+
+    <Accordion>
+        <AccordionSummary
+          expandIcon={<ArrowDownwardIcon />}
+          aria-controls="panel1-content"
+          id="panel1-header"
+        >
+          <Typography>Accordion 1</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+            malesuada lacus ex, sit amet blandit leo lobortis eget.
+          </Typography>
+        </AccordionDetails>
+      </Accordion>
+*/

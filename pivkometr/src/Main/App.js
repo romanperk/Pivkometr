@@ -1,16 +1,17 @@
 import * as React from 'react';
 import PivkoBar from '../App/pivko_bar';
 import MainPage from '../App/main_page';
+import { Box } from '@mui/material';
 import './App.css';
 
 function App() {
   return (
-   <>
+   <div className='App-header'>
       <PivkoBar/>
-      <div className='App-header'>
+      <Box sx={{ bgcolor: 'grey', borderRadius: 3, p: 2, margin: 2 }} >
         <MainPage/>
-      </div>
-   </>
+        </Box>
+   </div>
   );
 };
 
