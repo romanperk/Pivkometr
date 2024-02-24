@@ -10,7 +10,7 @@ function App() {
       <PivkoBar/>
       <Box sx={{ borderRadius: 3, p: 2 }} >
         <MainPage/>
-        </Box>
+      </Box>
    </div>
   );
 };

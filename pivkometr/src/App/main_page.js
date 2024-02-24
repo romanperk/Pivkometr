@@ -1,15 +1,9 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
-import Stack from '@mui/material/Stack';
 import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
-import Accordion from '@mui/material/Accordion';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import Selector from './selector';
-import Input from './text_field';
-import Summary from './summary';
+import AccordAdd from './Add/accord_add';
+import AccordSumm from './Summary/accord_summary';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import '../Main/App.css';
 
@@ -30,55 +24,23 @@ const darkTheme = createTheme({
     Moznost zmenit mnozstvi v prehledu
   */
  
-  export default function MainPage() {
+export default function MainPage() {
   return (
       <div>
         <ThemeProvider theme={darkTheme}>
-        <Box sx={{ borderRadius: 3, margin: 3 }} >
-                <Item>UŽIJ SI PIVKO!</Item>
-        </Box>
-        <Box>
-        <Accordion sx={{ borderRadius: 5, margin: 3 }}>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon/>}
-          aria-controls="panel1-content"
-          id="panel1-header"
-          sx={{ borderRadius: 5}}
-        >
-          Přidej položku
-        </AccordionSummary>
-        <AccordionDetails>
-          <Box sx={{ borderRadius: 3, p: 2, margin: 2 }} >
-                <Stack spacing={2}>
-                    <Item sx={{ width: 270 }}><Selector label="Vyber druh"/></Item>
-                    <Item sx={{ width: 270 }}><Selector label="Vyber množství"/></Item>
-                    <Item sx={{ width: 270 }}><Input label="Zadej název"/></Item>
-                    <Item sx={{ width: 270 }}><Input label="Zadej cenu"/></Item>
-                </Stack>
+
+          <Box sx={{ borderRadius: 3, margin: 3 }} >
+            <Item>UŽIJ SI PIVKO!</Item>
           </Box>
-        </AccordionDetails>
-        </Accordion>
-        </Box>
 
-        <Box>
-        <Accordion sx={{ borderRadius: 3, margin: 3 }}>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon/>}
-          aria-controls="panel1-content"
-          id="panel1-header"
-          sx={{ borderRadius: 3}}
-        >
-          Přehled položek
-        </AccordionSummary>
-          <AccordionDetails>
-        <Summary/>
-        </AccordionDetails>
-        </Accordion>
-        </Box>
+          <Box>
+            <AccordAdd/>
+          </Box>
 
-        <Box sx={{ margin: 3 }} >
-                <Item>Celková cena = 605Kč</Item>
-        </Box>
+          <Box>
+            <AccordSumm/>
+          </Box>
+          
         </ThemeProvider>
     </div>
   );
