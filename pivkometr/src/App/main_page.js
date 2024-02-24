@@ -7,6 +7,8 @@ import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import Selector from './selector';
+import Input from './text_field';
 import '../Main/App.css';
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -14,7 +16,7 @@ const Item = styled(Paper)(({ theme }) => ({
     ...theme.typography.body2,
     padding: theme.spacing(1),
     textAlign: 'center',
-    color: theme.palette.text.secondary,
+    color: theme.palette.text.secondary
   }));
  
   /* 
@@ -25,7 +27,10 @@ const Item = styled(Paper)(({ theme }) => ({
   export default function MainPage() {
   return (
       <div>
-        <Accordion>
+        <Box sx={{ bgcolor: 'grey', borderRadius: 3, p: 2, margin: 2 }} >
+                <Item>UŽIJ SI PIVKO</Item>
+        </Box>
+        <Accordion sx={{ bgcolor: 'grey', borderRadius: 3, margin: 2 }}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon/>}
           aria-controls="panel1-content"
@@ -37,16 +42,16 @@ const Item = styled(Paper)(({ theme }) => ({
         <AccordionDetails>
           <Box sx={{ bgcolor: 'grey', borderRadius: 3, p: 2, margin: 2 }} >
                 <Stack spacing={2}>
-                    <Item>Vyber druh (pivo/jídlo/panák/nealko)</Item>
-                    <Item>Vyplň název (Plzeň)</Item>
-                    <Item>Vyber množství (0,5l)</Item>
-                    <Item>Vyplň cenu (55Kč)</Item>
+                    <Item sx={{ width: 270 }}><Selector label="Vyber druh"/></Item>
+                    <Item sx={{ width: 270 }}><Selector label="Vyber množství"/></Item>
+                    <Item sx={{ width: 270 }}><Input label="Zadej název"/></Item>
+                    <Item sx={{ width: 270 }}><Input label="Zadej cenu"/></Item>
                 </Stack>
           </Box>
         </AccordionDetails>
         </Accordion>
 
-        <Accordion>
+        <Accordion sx={{ bgcolor: 'grey', borderRadius: 3, margin: 2 }}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon/>}
           aria-controls="panel1-content"

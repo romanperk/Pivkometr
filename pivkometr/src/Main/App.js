@@ -8,7 +8,7 @@ function App() {
   return (
    <div className='App-header'>
       <PivkoBar/>
-      <Box sx={{ bgcolor: 'grey', borderRadius: 3, p: 2, margin: 2 }} >
+      <Box sx={{ borderRadius: 3, p: 2 }} >
         <MainPage/>
         </Box>
    </div>
