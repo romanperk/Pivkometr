@@ -1,15 +1,21 @@
-import * as React from 'react';
+import React from 'react';
 import TextField from '@mui/material/TextField';
 
+export default function TypeName({ value, onChange }) {
+  const handleChange = (event) => {
+    onChange(event.target.value);
+  };
 
-export default function TypePrize() {
   return (
-      <TextField 
-        sx={{ width: 270 }}
-        id="outlined-basic"
-        label="Zadej cenu"
-        variant="outlined" 
-        size="small"
-        color="secondary" focused/>
+    <TextField
+      sx={{ width: 270 }}
+      label="Zadej cenu"
+      variant="outlined"
+      size="small"
+      color="secondary"
+      focused
+      value={value}
+      onChange={handleChange}
+    />
   );
 }
