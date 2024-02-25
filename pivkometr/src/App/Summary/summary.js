@@ -15,6 +15,7 @@ const Item = styled(Paper)(({ theme }) => ({
   textAlign: 'center'
 }));
 
+// The content of summary accordion
 export default function Summary() {
   const { itemsList, handleUpdate } = useItems();
   const [value, setValue] = React.useState('1');
@@ -25,13 +26,16 @@ export default function Summary() {
 
   const calculateTotalPrice = () => {
     let total = 0;
-
+  
     Object.values(itemsList).forEach((category) => {
       category.forEach((item) => {
-        total += item.price * item.quantity;
+        // Check if price is a valid number, if not, set it to 0
+        if (!isNaN(item.price)) {
+          total += item.price * item.quantity;
+        }
       });
     });
-
+  
     return total;
   };
 
@@ -67,16 +71,16 @@ export default function Summary() {
     handleUpdate({ ...itemsList, [category]: updatedItemsList });
   };
 
-  const totalAllItems = calculateTotalPrice();
-
   return (
     <Box sx={{ width: '100%', typography: 'body1' }}>
       <TabContext value={value}>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
           <Tabs value={value} onChange={handleChange} textColor="secondary" indicatorColor="secondary" variant="scrollable">
-            {Object.keys(itemsList).map((categoryKey, index) => (
-              <Tab label={categoryKey.charAt(0).toUpperCase() + categoryKey.slice(1)} value={(index + 1).toString()} key={index} />
-            ))}
+            <Tab label="Piva" value="1" />
+            <Tab label="Drinky" value="2" />
+            <Tab label="Panáky" value="3" />
+            <Tab label="Jídlo" value="4" />
+            <Tab label="Nealko" value="5" />
           </Tabs>
         </Box>
         {Object.keys(itemsList).map((categoryKey, index) => (
@@ -84,12 +88,12 @@ export default function Summary() {
             <RenderItems
               items={itemsList[categoryKey]}
               handleQuantityChange={(itemId, newQuantity) => handleQuantityChange(itemId, newQuantity, categoryKey)}
-              handleItemDelete={(itemId) => handleItemDelete(itemId, categoryKey)} // Pass handleItemDelete function
+              handleItemDelete={(itemId) => handleItemDelete(itemId, categoryKey)}
             />
           </TabPanel>
         ))}
       </TabContext>
-      <Item>Celková cena: {totalAllItems}Kč</Item>
+      <Item>Celková cena: {calculateTotalPrice()}Kč</Item>
     </Box>
   );
 }

@@ -5,6 +5,7 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Summary from './summary';
 
+// Accordion component of showing summary of items
 export default function AccordSumm() {
   return (
     <Accordion sx={{ borderRadius: 3, margin: 3 }}>

@@ -4,6 +4,7 @@ import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import Select from '@mui/material/Select';
 
+// Shows only when "Pivo" or "Nealko" is selected
 export default function SelectSize({ value, onChange }) {
   const handleChange = (event) => {
     onChange(event.target.value);

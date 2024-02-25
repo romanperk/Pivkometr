@@ -1,5 +1,6 @@
 import React, { useState, createContext, useContext } from "react";
 
+// Initial values of items
 const INITIAL_VALUE = {
   beers: [
     { id: "d1bce180", name: "Plzeň", size: "0,5l", price: 50, quantity: 1 },

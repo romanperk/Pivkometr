@@ -5,6 +5,7 @@ import { Box } from '@mui/material';
 import { ItemsProvider } from '../App/items_provider';
 import './App.css';
 
+// The whole app
 function App() {
   return (
    <div className='App-header'>

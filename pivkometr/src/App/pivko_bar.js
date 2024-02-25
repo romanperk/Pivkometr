@@ -6,7 +6,7 @@ import Container from '@mui/material/Container';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import SportsBarRoundedIcon from '@mui/icons-material/SportsBarRounded';
 
-
+// App bar of the application
 function PivkoBar() {
 
   const theme = createTheme({

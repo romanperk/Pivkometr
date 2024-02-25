@@ -10,18 +10,20 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import SelectType from './select_type';
 import SelectSize from './select_size';
 import TypeName from './type_name';
-import TypePrize from './type_prize';
+import TypePrice from './type_price';
 import Button from '@mui/material/Button';
-import { useItems } from '../items_provider'; // Import useItems hook
+import { useItems } from '../items_provider';
 
+// Item specification
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body1,
   padding: theme.spacing(1),
   textAlign: 'center'
 }));
 
+// Accordion component of adding an item
 export default function AccordAdd() {
-  const { handleAdd } = useItems(); // Destructure handleAdd function from useItems
+  const { handleAdd } = useItems();
 
   const [selectedType, setSelectedType] = useState('');
   const [selectedSize, setSelectedSize] = useState('');
@@ -30,13 +32,13 @@ export default function AccordAdd() {
 
   // Function to handle adding an item
   const handleAddItem = () => {
-    if (!selectedType || !name || !price) {
-      alert('Please fill in all fields');
+    if (!selectedType || !name ) {
+      alert('Zadej všechny potřebný hodnoty, blbečku!');
       return;
     }
 
     const newItem = {
-      id: generateUniqueId(), // You'd need a function to generate unique IDs
+      id: generateUniqueId(),
       name: name,
       price: parseInt(price),
       quantity: 1
@@ -46,14 +48,14 @@ export default function AccordAdd() {
       newItem.size = selectedSize;
     }
 
-    handleAdd(selectedType, newItem); // Call handleAdd function with type and new item
+    handleAdd(selectedType, newItem);
     setSelectedType('');
     setSelectedSize('');
     setName('');
     setPrice('');
   };
 
-  // Function to generate a unique ID (you might need a more robust solution)
+  // Function to generate unique ID
   const generateUniqueId = () => {
     return Math.random().toString(36).substr(2, 9);
   };
@@ -73,27 +75,27 @@ export default function AccordAdd() {
           <Stack spacing={2}>
             <Item sx={{ width: 270 }}>
               <SelectType
-                value={selectedType} // Pass selectedType as value prop
+                value={selectedType}
                 onChange={setSelectedType}
               />
             </Item>
             {selectedType === "beers" || selectedType === "nonalco" ? (
               <Item sx={{ width: 270 }}>
                 <SelectSize
-                  value={selectedSize} // Pass selectedSize as value prop
+                  value={selectedSize}
                   onChange={setSelectedSize}
                 />
               </Item>
             ) : null}
             <Item sx={{ width: 270 }}>
               <TypeName
-                value={name} // Pass name as value prop
+                value={name}
                 onChange={setName}
               />
             </Item>
             <Item sx={{ width: 270 }}>
-              <TypePrize
-                value={price} // Pass price as value prop
+              <TypePrice
+                value={price}
                 onChange={setPrice}
               />
             </Item>

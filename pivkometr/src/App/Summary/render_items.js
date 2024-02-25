@@ -4,6 +4,7 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
 import DeleteIcon from '@mui/icons-material/Delete';
 
+// Single item showing in summary of items
 export default function RenderItems({ items, handleQuantityChange, handleItemDelete }) {
   if (!items || !Array.isArray(items)) {
     return null;
@@ -11,7 +12,8 @@ export default function RenderItems({ items, handleQuantityChange, handleItemDel
 
   return items.map((item, index) => (
     <div key={index}>
-      {item.name} {item.size ? `${item.size}` : ''} ({item.price}Kč){" "}
+      {item.name} {item.size ? `${item.size}` : ''} 
+      {item.price ? ` (${item.price}Kč)` : ''}{" "}
       {item.quantity > 0 ? (
         <>
           <IconButton
@@ -24,7 +26,7 @@ export default function RenderItems({ items, handleQuantityChange, handleItemDel
         </>
       ) : (
         <IconButton
-          onClick={() => handleItemDelete(item.id)} // Pass itemId to handleItemDelete
+          onClick={() => handleItemDelete(item.id)}
           aria-label="delete"
         >
           <DeleteIcon />
@@ -35,8 +37,7 @@ export default function RenderItems({ items, handleQuantityChange, handleItemDel
         aria-label="add"
       >
         <AddIcon />
-      </IconButton>{" "}
-      = {item.price * item.quantity}Kč
+      </IconButton>
       <br />
     </div>
   ));

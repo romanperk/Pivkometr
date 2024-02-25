@@ -14,12 +14,14 @@ const Item = styled(Paper)(({ theme }) => ({
   textAlign: 'center'
 }));
 
+// Making the application visually dark
 const darkTheme = createTheme({
   palette: {
     mode: 'dark',
   },
 });
 
+// Main page component
 export default function MainPage() {
   return (
     <div>
