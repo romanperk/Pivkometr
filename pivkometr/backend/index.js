@@ -1,19 +1,14 @@
+// index.js
 const express = require('express');
-const bodyParser = require('body-parser');
-const cors = require('cors');
-
 const app = express();
-const port = process.env.PORT || 5000;
+const authRoutes = require('./routes/auth');
+const profileRoutes = require('./routes/profile');
 
-app.use(bodyParser.json());
-app.use(cors());
+app.use(express.json());
+app.use('/api/auth', authRoutes);
+app.use('/api/user', profileRoutes);
 
-// Define your routes here
-app.get('/', (req, res) => {
-  res.send('Hello from the backend!');
-});
-
-// Start the server
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
