@@ -25,44 +25,42 @@ const darkTheme = createTheme({
 export default function MainPage() {
   const { user } = useUser();
   const navigate = useNavigate(); // Use navigate instead of history
-  
+
   // Redirect to login if user is not logged in
   const handleLoginClick = () => {
     navigate('/login');  // Redirect to login page
   };
 
-  if (!user) {
-    return (
-      <ThemeProvider theme={darkTheme}>
+  return (
+    <ThemeProvider theme={darkTheme}>
+      {user ? (
+        <>
+          <Box sx={{ borderRadius: 3, margin: 3 }}>
+            <Item>UŽIJ SI PIVKO!</Item>
+          </Box>
+          <Box>
+            <AccordAdd />
+          </Box>
+          <Box>
+            <AccordSumm />
+          </Box>
+        </>
+      ) : (
         <Box sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        height: '60vh',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          height: '60vh',
         }}>
           <Typography sx={{ color: 'white', paddingBottom: 2 }} variant="h6" gutterBottom align='center'>
             Odemkni exkluzivní obsah!<br/>Krok 1: Vytvoř si účet.<br/>Krok 2: Neexistuje krok 2. <br/>Vítej!
           </Typography>
           <Button color="secondary" variant="contained" onClick={handleLoginClick}>
-        Přihlásit
-      </Button>
+            Přihlásit
+          </Button>
         </Box>
-      </ThemeProvider>
-    );
-  }
-
-  return (
-    <ThemeProvider theme={darkTheme}>
-      <Box sx={{ borderRadius: 3, margin: 3 }}>
-        <Item>UŽIJ SI PIVKO!</Item>
-      </Box>
-      <Box>
-        <AccordAdd />
-      </Box>
-      <Box>
-        <AccordSumm />
-      </Box>
+      )}
     </ThemeProvider>
   );
 }
